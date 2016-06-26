@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package fileserver;
+
+service File {
+  rpc GetFile(FileDescriptor) returns (stream FileContent) {}
+}
+
+message FileDescriptor {
+  string filename = 1;
+}
+
+message FileContent {
+  bytes content = 1;
+}

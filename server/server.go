@@ -44,7 +44,8 @@ func (fs *fileServer) GetFile(fd *pb.FileDescriptor, stream pb.File_GetFileServe
 
     for {
         n, err := fo.Read(content.Content)
-        fmt.Println(n)
+        content.Content = content.Content[:n]
+        fmt.Println(len(content.Content))
         if err != nil && err != io.EOF {
             return err
         }

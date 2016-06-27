@@ -41,8 +41,10 @@ func ReadFile(conn pb.FileClient, filename string) error {
       panic(err)
     }
 
-    if _, err := outFd.Write(content.Content); err != nil {
+    if n, err := outFd.Write(content.Content); err != nil {
       panic(err)
+    } else {
+      fmt.Println(n)
     }
   }
 
